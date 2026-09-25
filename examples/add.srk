@@ -1,20 +1,11 @@
-root(body={
-    function_definition(name="add",params=["a","b"],body={
-        return(
-            data=add(
-                A=read_symbol(name="a"),
-                B=read_symbol(name="b")
-            )
+root(
+    body={
+        create_class(
+            name="Apple",
+            body={
+                member_access(object=this());
+            }
         );
-    });
-    print(content=function_call(name="add",params={
-        number_literal(content=123);
-        number_literal(content=123);
-    }));
-    print(
-        content=string_literal(
-            content="Hello World!"
-        )
-    );
-    pr
-})
+        print(content=
+    }
+)
