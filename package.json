@@ -1,0 +1,70 @@
+{
+    "name": "garlic-vscode",
+    "displayName": "Garlic",
+    "description": "Garlic DSL language support for ShrimpVM (.srk)",
+    "version": "0.1.0",
+    "publisher": "Rundll86",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Rundll86/garlic-vscode"
+    },
+    "engines": {
+        "vscode": "^1.85.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "activationEvents": [],
+    "main": "./out/extension.js",
+    "contributes": {
+        "languages": [
+            {
+                "id": "garlic",
+                "aliases": [
+                    "Garlic",
+                    "garlic"
+                ],
+                "extensions": [
+                    ".srk"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "garlic",
+                "scopeName": "source.garlic",
+                "path": "./syntaxes/garlic.tmLanguage.json"
+            }
+        ],
+        "configuration": {
+            "title": "Garlic",
+            "properties": {
+                "garlicLsp.host": {
+                    "type": "string",
+                    "default": "127.0.0.1",
+                    "description": "Host running the Garlic LSP server (inside the Godot editor)."
+                },
+                "garlicLsp.port": {
+                    "type": "number",
+                    "default": 6009,
+                    "description": "TCP port of the Garlic LSP server."
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./"
+    },
+    "dependencies": {
+        "vscode-languageclient": "^9.0.1"
+    },
+    "devDependencies": {
+        "@types/node": "^20.11.0",
+        "@types/vscode": "^1.138.0",
+        "typescript": "^5.4.0"
+    }
+}

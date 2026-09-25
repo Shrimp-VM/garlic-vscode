@@ -1,0 +1,104 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Garlic",
+	"scopeName": "source.garlic",
+	"patterns": [
+		{
+			"include": "#comment"
+		},
+		{
+			"include": "#stringname"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#node"
+		},
+		{
+			"include": "#attribute"
+		},
+		{
+			"include": "#number"
+		},
+		{
+			"include": "#boolean"
+		},
+		{
+			"include": "#punctuation"
+		}
+	],
+	"repository": {
+		"comment": {
+			"begin": "<",
+			"end": ">",
+			"name": "comment.block.garlic",
+			"patterns": [
+				{
+					"include": "#comment"
+				}
+			]
+		},
+		"strings": {
+			"patterns": [
+				{
+					"begin": "\"",
+					"end": "\"",
+					"name": "string.quoted.double.garlic",
+					"patterns": [
+						{
+							"match": "\\\\.",
+							"name": "constant.character.escape.garlic"
+						}
+					]
+				},
+				{
+					"begin": "'",
+					"end": "'",
+					"name": "string.quoted.single.garlic",
+					"patterns": [
+						{
+							"match": "\\\\.",
+							"name": "constant.character.escape.garlic"
+						}
+					]
+				},
+				{
+					"begin": "“",
+					"end": "”",
+					"name": "string.quoted.other.garlic"
+				},
+				{
+					"begin": "`",
+					"end": "`",
+					"name": "string.quoted.other.garlic"
+				}
+			]
+		},
+		"stringname": {
+			"begin": "「",
+			"end": "」",
+			"name": "string.quoted.stringname.garlic"
+		},
+		"node": {
+			"match": "\\b[A-Za-z_][A-Za-z0-9_]*(?=\\s*\\()",
+			"name": "entity.name.function.garlic"
+		},
+		"attribute": {
+			"match": "\\b[A-Za-z_][A-Za-z0-9_]*(?=\\s*=)",
+			"name": "entity.other.attribute-name.garlic"
+		},
+		"number": {
+			"match": "-?\\b\\d+(\\.\\d+)?\\b",
+			"name": "constant.numeric.garlic"
+		},
+		"boolean": {
+			"match": "\\b(true|false)\\b",
+			"name": "constant.language.garlic"
+		},
+		"punctuation": {
+			"match": "[()\\[\\]{},=;]",
+			"name": "punctuation.separator.garlic"
+		}
+	}
+}
