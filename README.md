@@ -1,7 +1,7 @@
 # garlic-vscode
 
 ## **这个文档是AI写的！！！**
- 
+
 [Garlic](https://github.com/Shrimp-VM/garlic-language) DSL 的 VSCode 扩展，为 ShrimpVM 的 `.srk` 脚本提供语言支持。
 
 ## 功能
