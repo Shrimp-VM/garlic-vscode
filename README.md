@@ -1,4 +1,4 @@
-# garlic-vscode
+# Garlic VSCode
 
 ## **这个文档是AI写的！！！**
 
