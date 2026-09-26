@@ -39,7 +39,6 @@ jobs:
             git switch --orphan build
           fi
 
-          cp "$VSIX" .
           git add "$VSIX"
           git commit -m "build: ${VSIX} (${GITHUB_SHA::7})"
           git push origin build
