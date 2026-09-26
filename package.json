@@ -2,7 +2,7 @@
     "name": "garlic-vscode",
     "displayName": "Garlic",
     "description": "Garlic DSL language support for ShrimpVM (.srk)",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "publisher": "Rundll86",
     "license": "MIT",
     "repository": {
@@ -10,7 +10,7 @@
         "url": "https://github.com/Rundll86/garlic-vscode"
     },
     "engines": {
-        "vscode": "^1.85.0"
+        "vscode": "^1.138.0"
     },
     "categories": [
         "Programming Languages"
@@ -55,16 +55,18 @@
         }
     },
     "scripts": {
-        "vscode:prepublish": "npm run compile",
-        "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./"
+        "compile": "tsc",
+        "watch": "tsc -watch",
+        "prepublishOnly": "run-s vscode:prepublish",
+        "vscode:prepublish": "run-s compile"
     },
     "dependencies": {
         "vscode-languageclient": "^9.0.1"
     },
     "devDependencies": {
-        "@types/node": "^20.11.0",
+        "@types/node": "^20.19.43",
         "@types/vscode": "^1.138.0",
-        "typescript": "^5.4.0"
+        "npm-run-all": "^4.1.5",
+        "typescript": "^5.9.3"
     }
 }
