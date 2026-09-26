@@ -22,7 +22,7 @@ jobs:
 
       - run: npm run vscx
 
-      - run: npm publish
+      - run: npm stage publish
 
       - name: Deploy to build branch
         run: |
