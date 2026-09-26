@@ -1,0 +1,40 @@
+name: Publish
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  publish:
+    if: contains(github.event.head_commit.message, '--publish')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm ci
+
+      - run: npm run vscx
+
+      - name: Deploy to build branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          VSIX=$(ls *.vsix)
+
+          if git ls-remote --exit-code --heads origin build; then
+            git fetch origin build
+            git switch build
+            git rm -rf --ignore-unmatch .
+          else
+            git switch --orphan build
+          fi
+
+          cp "$VSIX" .
+          git add "$VSIX"
+          git commit -m "build: ${VSIX} (${GITHUB_SHA::7})"
+          git push origin build
